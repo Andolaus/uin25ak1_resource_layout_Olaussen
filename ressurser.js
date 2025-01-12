@@ -94,3 +94,20 @@ const resources = [
         ]
     },
 ]
+
+// Lager en h1 overskrift
+const header = document.querySelector("header");
+const h1 = document.createElement("h1");
+h1.innerText = "Ressursarkiv - Utvikling av interaktive nettsteder";
+header.append(h1);
+
+// Referanser til id'er i html 
+const tabs = document.getElementById("tabs");
+
+// Fyller inn elementer i de ulike tabs
+function createTabs() {
+    tabs.innerHTML = resources.map(tab => `<li>${tab.category}</li>`);
+}
+
+createTabs();
+
