@@ -96,23 +96,40 @@ const resources = [
 ]
 
 // Lager en h1 overskrift
-const header = document.querySelector("header");
-const h1 = document.createElement("h1");
-h1.innerText = "Ressursarkiv - Utvikling av interaktive nettsteder";
-header.append(h1);
+const header = document.querySelector("header")
+const h1 = document.createElement("h1")
+h1.innerText = "Ressursarkiv - Utvikling av interaktive nettsteder"
+header.append(h1)
 
 // Referanser til id'er i html 
-const tabs = document.getElementById("tabs");
-const title = document.getElementById("resource-title");
-const text = document.getElementById("resource-text");
-const links = document.getElementById("resource-links");
+const tabs = document.getElementById("tabs")
+const title = document.getElementById("resource-title")
+const text = document.getElementById("resource-text")
+const links = document.getElementById("resource-links")
 
 // Fyller inn elementer i de ulike tabbene
 function createTabs() {
-    tabs.innerHTML = resources.map(tab => `<li>${tab.category}</li>`);
+    tabs.innerHTML = resources.map(tab => `<li>${tab.category}</li>`)
 }
 
+// Lager funksjon for å genere linker 
+function createLinks(sources) {
+    return sources.map((source) => 
+        `<li><a href="${source.url}"target="_blank">${source.title}</a></li>`).join('')
+}
 
+// Variabel for å holde på HTML informasjon om de ulike kategoriene
+let categoryHTML = ""
+
+resources.map((resources, index) => categoryHTML += 
+        `<section id="resource-container">
+            <h2 id ="resource-title">${resources.category}</h2>
+            <p id="resource-text">${resources.text}</p>
+            <ul id="resource-links">${createLinks(resources.sources)}</ul>
+        </section>`)
+
+// Finner #resource-container og fyller opp verdier fra categoryHTML
+document.getElementById("resource-container").innerHTML = categoryHTML
 
 createTabs();
 
