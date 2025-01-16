@@ -1,5 +1,12 @@
+:root {
+    --dark-slate-blue: #2A324B;
+    --cool-blue: #58699D;
+    --light-gray-blue: #E1E5EE;
+    --pure-white: #fff;
+}
+
 body {
-    background-color: #E1E5EE;
+    background-color: var(--light-gray-blue);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,37 +34,32 @@ main {
             padding: 0;
 
             .tab {
-                background-color: #2A324B;
+                background-color: var(--dark-slate-blue);
                 font-weight: 900;
-                color: #fff;
-                padding: 2rem 5rem 2rem 5rem;
-                margin-left: 5px;
-                margin-right: 5px;
-                cursor: pointer;
-
+                color: var(--pure-white);
+                padding: 25px 65px 25px 65px;
             }
 
             .tab.active {
-                background-color: #fff;
-                color: #2A324B;
+                background-color: var(--pure-white);
+                color: var(--dark-slate-blue);
             }
         }
     }
     
     #resource-container {
-            background-color: #fff;
-            padding: 3rem;
-            margin-right: 5px;
-            margin-left: 5px;
+            background-color: var(--pure-white);
+            padding: 2rem;
+            max-width: 1090px;
 
             h2 {
-                color: #2A324B;
+                color: var(--dark-slate-blue);
             }
 
             ul {
                 li {
                     a {
-                        color: #58699D;
+                        color: var(--cool-blue);
                     }
                 }
             }

@@ -112,9 +112,16 @@ function createTabs() {
     const tabClick = document.querySelectorAll(".tab")
     tabClick.forEach(tab => {
         tab.addEventListener("click", () => {
+            // Fjerner active fra alle tabs
+            tabClick.forEach(t => t.classList.remove("active"))
+            // legger til active på klikket tab
+            tab.classList.add("active")
+
             fillContainer(tab.innerText)
         })
     })
+    // Første tab er active når siden lastes inn
+    tabClick[0].classList.add("active")
 }
 
 // Funksjon for å genere linker 
