@@ -103,11 +103,16 @@ header.append(h1);
 
 // Referanser til id'er i html 
 const tabs = document.getElementById("tabs");
+const title = document.getElementById("resource-title");
+const text = document.getElementById("resource-text");
+const links = document.getElementById("resource-links");
 
-// Fyller inn elementer i de ulike tabs
+// Fyller inn elementer i de ulike tabbene
 function createTabs() {
     tabs.innerHTML = resources.map(tab => `<li>${tab.category}</li>`);
 }
+
+
 
 createTabs();
 
