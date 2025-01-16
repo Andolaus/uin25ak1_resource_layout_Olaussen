@@ -103,33 +103,41 @@ header.append(h1)
 
 // Referanser til id'er i html 
 const tabs = document.getElementById("tabs")
-const title = document.getElementById("resource-title")
-const text = document.getElementById("resource-text")
-const links = document.getElementById("resource-links")
+const resourceContainer = document.getElementById("resource-container")
 
 // Fyller inn elementer i de ulike tabbene
 function createTabs() {
-    tabs.innerHTML = resources.map(tab => `<li>${tab.category}</li>`)
+    tabs.innerHTML = resources.map(tab => `<li class="tab">${tab.category}</li>`).join('')
+
+    const tabClick = document.querySelectorAll(".tab")
+    tabClick.forEach(tab => {
+        tab.addEventListener("click", () => {
+            fillContainer(tab.innerText)
+        })
+    })
 }
 
-// Lager funksjon for å genere linker 
+// Funksjon for å genere linker 
 function createLinks(sources) {
     return sources.map((source) => 
         `<li><a href="${source.url}"target="_blank">${source.title}</a></li>`).join('')
 }
 
-// Variabel for å holde på HTML informasjon om de ulike kategoriene
-let categoryHTML = ""
+// Funksjon for å fylle HTML taggene basert på kategori 
+function fillContainer (category) {
+    const resource = resources.filter(r => r.category === category)[0]
+        if (resource) {
+            // Generere HTML kode
+            resourceContainer.innerHTML =
+            `<section id="resource-container">
+            <h2 id ="resource-title">${resource.category}</h2>
+            <p id="resource-text">${resource.text}</p>
+            <ul id="resource-links">${createLinks(resource.sources)}</ul>
+            </section>`
+        }
+}
 
-resources.map((resources, index) => categoryHTML += 
-        `<section id="resource-container">
-            <h2 id ="resource-title">${resources.category}</h2>
-            <p id="resource-text">${resources.text}</p>
-            <ul id="resource-links">${createLinks(resources.sources)}</ul>
-        </section>`)
 
-// Finner #resource-container og fyller opp verdier fra categoryHTML
-document.getElementById("resource-container").innerHTML = categoryHTML
-
-createTabs();
+createTabs()
+fillContainer("HTML")
 

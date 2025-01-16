@@ -22,23 +22,31 @@ main {
             display: flex;
             list-style: none;
             justify-content: space-between;
+            gap: 1rem;
             margin: 0;
             padding: 0;
 
-            li {
+            .tab {
                 background-color: #2A324B;
                 font-weight: 900;
                 color: #fff;
                 padding: 2rem 5rem 2rem 5rem;
                 margin-left: 5px;
                 margin-right: 5px;
+                cursor: pointer;
+
+            }
+
+            .tab.active {
+                background-color: #fff;
+                color: #2A324B;
             }
         }
     }
     
     #resource-container {
             background-color: #fff;
-            padding: 5rem;
+            padding: 3rem;
             margin-right: 5px;
             margin-left: 5px;
 
